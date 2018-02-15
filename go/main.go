@@ -17,7 +17,6 @@ func main() {
 	imageDirectory := "/Users/bhanu/nanonets/code/images/"
 	modelID := "Enter-your-model-id"
 	apiKey := "Enter-your-api-key"
-
 	fileList := []string{}
 	err := filepath.Walk(annotationsDirectory, func(path string, f os.FileInfo, err error) error {
 		if f.IsDir() || filepath.Ext(path) == ".DS_Store" {
@@ -34,7 +33,7 @@ func main() {
 		fileName := strings.Split(folder[length-1], ".")[0]
 		buffer, _ := ioutil.ReadFile(filePath)
 		jsonText := string(buffer)
-		url := "http://localhost:8889/api/v2/ObjectDetection/Model/" + modelID + "/UploadFile/"
+		url := "https://app.nanonet.com/api/v2/ObjectDetection/Model/" + modelID + "/UploadFile/"
 
 		file, err := os.Open(imageDirectory + fileName + ".jpg")
 		if err != nil {

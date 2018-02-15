@@ -22,4 +22,10 @@ For running the go sample ->
 ```
 go run go/main.go
 ```
+
+For running the Python sample ->
+```
+pip install requests
+python python/upload.py
+```
 Note the golang sample uses the comverted json instead of the xml payload for convenience purposes, hence has no dependencies at all.
