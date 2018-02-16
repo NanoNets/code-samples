@@ -49,20 +49,17 @@ find.file(opts.annotationFolder, (files) => {
                     data: `[{"filename":"${name}", "object": ${jsonData}`,
                     file: fs.createReadStream(path.join(opts.imageFolder, name))
                 };
-                try {
-                    const resp = request.post({
-                        url: `https://app.nanonet.com/api/v2/ObjectDetection/Model/${opts.modelId}/UploadFile/`,
-                        formData: formData,
-                        auth: {
-                            username: opts.api,
-                            password: ''
-                        }
-                    }, (err, body) => {
-                        callback(err, body)
-                    });
-                } catch (error) {
-                    callback(error)
-                }
+
+                const resp = request.post({
+                    url: `https://app.nanonet.com/api/v2/ObjectDetection/Model/${opts.modelId}/UploadFile/`,
+                    formData: formData,
+                    auth: {
+                        username: opts.api,
+                        password: ''
+                    }
+                }, (err, body) => {
+                    callback(err, body)
+                });
             }, function (err, results) {
                 outerCB(err, results)
             });
